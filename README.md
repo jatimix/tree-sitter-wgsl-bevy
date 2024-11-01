@@ -1,7 +1,6 @@
 tree-sitter-wgsl-bevy
 =====================
 
-[![CI][ci]](https://github.com/tree-sitter-grammars/tree-sitter-wgsl-bevy/actions/workflows/ci.yml)
 [![discord][discord]](https://discord.gg/w7nTvsVJhm)
 [![matrix][matrix]](https://matrix.to/#/#tree-sitter-chat:matrix.org)
 [![npm][npm]](https://www.npmjs.com/package/tree-sitter-wgsl-bevy)
@@ -17,3 +16,23 @@ the [Bevy](https://bevyengine.org/) preprocessor.
 [npm]: https://img.shields.io/npm/v/tree-sitter-wgsl-bevy?logo=npm
 [crates]: https://img.shields.io/crates/v/tree-sitter-wgsl-bevy?logo=rust
 [pypi]: https://img.shields.io/pypi/v/tree-sitter-wgsl-bevy?logo=pypi&logoColor=ffd242
+
+# Objective
+
+Following should print 0:
+
+``` shell
+find ~/prog/bevy/ -name "*.wgsl" -exec tree-sitter parse {} \; | grep ERROR | wc -l
+```
+
+meaning: it parse 100% of bevy's wgsl code without any parse error.
+
+# Stuff to improve
+
+Contribution welcome.
+
+- [] Some improvements are actually WGSL standard spec improvement and not Bevy only. But I didn't want to update the main WGSL grammar, so I overwrite some things which could be ported back into the main WGSL grammar this grammar is based upon.
+- [] I reused '_import_path_' quite a lots instead of creating a "identifier::identifier::*", which make it difficult for syntax highlight and function call.
+- [] _import_path_ + _import_list_, is junky but functionnal. Might need to make a better tree here.
+- [] Function call and type Declaration is the same node, which make formatting kindda ugly.
+
