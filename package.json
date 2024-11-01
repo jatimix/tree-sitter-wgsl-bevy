@@ -44,12 +44,5 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/theHamsta/tree-sitter-wgsl-bevy.git"
-  },
-  "tree-sitter": [
-    {
-      "file-types": [
-        "wgsl"
-      ]
-    }
-  ]
+  }
 }

@@ -2,7 +2,8 @@
 #include <wctype.h>
 
 enum TokenType {
-	BLOCK_COMMENT
+	BLOCK_COMMENT,
+	STRING_CONTENT
 };
 
 void *tree_sitter_wgsl_bevy_external_scanner_create() {
@@ -23,12 +24,34 @@ static bool at_eof(TSLexer *lexer) {
 	return lexer->eof(lexer);
 }
 
+static inline bool process_string(TSLexer *lexer) {
+    bool has_content = false;
+    for (;;) {
+        if (lexer->lookahead == '\"' || lexer->lookahead == '\\') {
+			break;
+        }
+        if (lexer->eof(lexer)) {
+            return false;
+        }
+        has_content = true;
+        advance(lexer);
+    }
+	//if (has_content) advance(lexer);
+    lexer->result_symbol = STRING_CONTENT;
+    lexer->mark_end(lexer);
+    return has_content;
+}
+
 // based on https://github.com/tree-sitter/tree-sitter-rust/blob/f7fb205c424b0962de59b26b931fe484e1262b35/src/scanner.c
 bool tree_sitter_wgsl_bevy_external_scanner_scan(
 	void *payload,
 	TSLexer *lexer,
 	const bool *valid_symbols
 ) {
+	if (valid_symbols[STRING_CONTENT]) {
+        return process_string(lexer);
+    }
+
 	while (iswspace(lexer->lookahead)) {
 		lexer->advance(lexer, true);
 	}

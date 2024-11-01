@@ -57,6 +57,14 @@
           "named": true
         },
         {
+          "type": "preproc_ifdef_in_argument",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
           "type": "subscript_expression",
           "named": true
         },
@@ -90,9 +98,13 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -115,6 +127,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -171,9 +187,13 @@
     "named": true,
     "fields": {
       "left": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -196,6 +216,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -213,9 +237,13 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -238,6 +266,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -285,7 +317,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -310,6 +342,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
           "named": true
         },
         {
@@ -401,6 +437,10 @@
           "named": true
         },
         {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
           "type": "variable_statement",
           "named": true
         },
@@ -441,9 +481,13 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -466,6 +510,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -551,6 +599,10 @@
         },
         {
           "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "type_constructor_or_function_call_expression",
           "named": true
         },
         {
@@ -684,6 +736,10 @@
           "named": true
         },
         {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
           "type": "variable_statement",
           "named": true
         },
@@ -738,6 +794,21 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "define_preproc",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -834,6 +905,10 @@
           "named": true
         },
         {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
           "type": "subscript_expression",
           "named": true
         },
@@ -875,6 +950,16 @@
     "type": "function_declaration",
     "named": true,
     "fields": {
+      "attribute": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "attribute",
+            "named": true
+          }
+        ]
+      },
       "body": {
         "multiple": false,
         "required": true,
@@ -890,17 +975,13 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          },
-          {
             "type": "import_path",
             "named": true
           }
         ]
       },
       "parameters": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -925,7 +1006,7 @@
       "required": false,
       "types": [
         {
-          "type": "attribute",
+          "type": "preproc_ifdef_in_param_list",
           "named": true
         }
       ]
@@ -991,6 +1072,10 @@
           "named": true
         },
         {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
           "type": "subscript_expression",
           "named": true
         },
@@ -1047,9 +1132,13 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1072,6 +1161,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -1098,6 +1191,42 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "preproc_ifdef_before_else",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "import_list",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "alias",
+            "named": true
+          }
+        ]
+      },
+      "path": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "import_path",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -1110,6 +1239,14 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "import_list",
+          "named": true
+        },
+        {
+          "type": "string_path",
           "named": true
         }
       ]
@@ -1222,6 +1359,10 @@
           "named": true
         },
         {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
           "type": "variable_statement",
           "named": true
         },
@@ -1271,7 +1412,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1296,6 +1437,14 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_argument",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
           "named": true
         },
         {
@@ -1350,6 +1499,10 @@
           "named": true
         },
         {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
           "type": "subscript_expression",
           "named": true
         },
@@ -1365,43 +1518,48 @@
     }
   },
   {
-    "type": "preproc_else",
+    "type": "preproc_bevy_elif",
     "named": true,
-    "fields": {},
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "assignment_statement",
-          "named": true
-        },
-        {
-          "type": "break_statement",
-          "named": true
-        },
-        {
-          "type": "compound_statement",
-          "named": true
-        },
-        {
-          "type": "continue_statement",
-          "named": true
-        },
-        {
-          "type": "decrement_statement",
-          "named": true
-        },
-        {
           "type": "define_import_path",
           "named": true
         },
         {
-          "type": "discard_statement",
-          "named": true
-        },
-        {
-          "type": "for_statement",
+          "type": "define_preproc",
           "named": true
         },
         {
@@ -1417,18 +1575,6 @@
           "named": true
         },
         {
-          "type": "if_statement",
-          "named": true
-        },
-        {
-          "type": "increment_statement",
-          "named": true
-        },
-        {
-          "type": "loop_statement",
-          "named": true
-        },
-        {
           "type": "preproc_ifdef",
           "named": true
         },
@@ -1437,44 +1583,212 @@
           "named": true
         },
         {
-          "type": "return_statement",
-          "named": true
-        },
-        {
           "type": "struct_declaration",
           "named": true
         },
         {
-          "type": "struct_member",
-          "named": true
-        },
-        {
-          "type": "switch_statement",
-          "named": true
-        },
-        {
           "type": "type_alias_declaration",
-          "named": true
-        },
-        {
-          "type": "variable_statement",
-          "named": true
-        },
-        {
-          "type": "while_statement",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "preproc_ifdef",
+    "type": "preproc_bevy_elif_before_else",
     "named": true,
     "fields": {
       "alternative": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "else_statement",
+            "named": true
+          },
+          {
+            "type": "preproc_bevy_elif_before_else",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "preproc_ifdef_before_else",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_bevy_elif_in_argument",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_argument",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bitcast_expression",
+          "named": true
+        },
+        {
+          "type": "composite_value_decomposition_expression",
+          "named": true
+        },
+        {
+          "type": "const_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_argument",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_bevy_elif_in_param_list",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_param_list",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter_list",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_param_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_bevy_elif_in_statement",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_statement",
+            "named": true
+          },
           {
             "type": "preproc_else",
             "named": true
@@ -1517,7 +1831,389 @@
           "named": true
         },
         {
+          "type": "discard_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "increment_statement",
+          "named": true
+        },
+        {
+          "type": "loop_statement",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_statement",
+          "named": true
+        },
+        {
+          "type": "preproc_import",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
+          "type": "variable_statement",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_bevy_elif_in_struct_declaration",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_struct_declaration",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_struct_declaration",
+          "named": true
+        },
+        {
+          "type": "preproc_import",
+          "named": true
+        },
+        {
+          "type": "struct_member",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_else",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "else_statement",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bitcast_expression",
+          "named": true
+        },
+        {
+          "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "composite_value_decomposition_expression",
+          "named": true
+        },
+        {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
+          "type": "const_literal",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "decrement_statement",
+          "named": true
+        },
+        {
           "type": "define_import_path",
+          "named": true
+        },
+        {
+          "type": "define_preproc",
+          "named": true
+        },
+        {
+          "type": "discard_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "function_declaration",
+          "named": true
+        },
+        {
+          "type": "global_constant_declaration",
+          "named": true
+        },
+        {
+          "type": "global_variable_declaration",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "increment_statement",
+          "named": true
+        },
+        {
+          "type": "loop_statement",
+          "named": true
+        },
+        {
+          "type": "parameter_list",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_import",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "struct_declaration",
+          "named": true
+        },
+        {
+          "type": "struct_member",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "type_alias_declaration",
+          "named": true
+        },
+        {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "variable_statement",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifdef",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif",
+            "named": true
+          },
+          {
+            "type": "preproc_bevy_elif_in_statement",
+            "named": true
+          },
+          {
+            "type": "preproc_bevy_elif_in_struct_declaration",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bitcast_expression",
+            "named": true
+          },
+          {
+            "type": "composite_value_decomposition_expression",
+            "named": true
+          },
+          {
+            "type": "const_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "type_constructor_or_function_call_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "decrement_statement",
+          "named": true
+        },
+        {
+          "type": "define_import_path",
+          "named": true
+        },
+        {
+          "type": "define_preproc",
           "named": true
         },
         {
@@ -1557,6 +2253,14 @@
           "named": true
         },
         {
+          "type": "preproc_ifdef_in_statement",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_struct_declaration",
+          "named": true
+        },
+        {
           "type": "preproc_import",
           "named": true
         },
@@ -1581,11 +2285,563 @@
           "named": true
         },
         {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
           "type": "variable_statement",
           "named": true
         },
         {
           "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifdef_before_else",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "else_statement",
+            "named": true
+          },
+          {
+            "type": "preproc_bevy_elif_before_else",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bitcast_expression",
+            "named": true
+          },
+          {
+            "type": "composite_value_decomposition_expression",
+            "named": true
+          },
+          {
+            "type": "const_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "type_constructor_or_function_call_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "preproc_ifdef_before_else",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifdef_in_argument",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_argument",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bitcast_expression",
+            "named": true
+          },
+          {
+            "type": "composite_value_decomposition_expression",
+            "named": true
+          },
+          {
+            "type": "const_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "type_constructor_or_function_call_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "bitcast_expression",
+          "named": true
+        },
+        {
+          "type": "composite_value_decomposition_expression",
+          "named": true
+        },
+        {
+          "type": "const_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_argument",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
+          "type": "subscript_expression",
+          "named": true
+        },
+        {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifdef_in_param_list",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_param_list",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bitcast_expression",
+            "named": true
+          },
+          {
+            "type": "composite_value_decomposition_expression",
+            "named": true
+          },
+          {
+            "type": "const_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "type_constructor_or_function_call_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "parameter_list",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_param_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifdef_in_statement",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_statement",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bitcast_expression",
+            "named": true
+          },
+          {
+            "type": "composite_value_decomposition_expression",
+            "named": true
+          },
+          {
+            "type": "const_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "type_constructor_or_function_call_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "break_statement",
+          "named": true
+        },
+        {
+          "type": "compound_statement",
+          "named": true
+        },
+        {
+          "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "decrement_statement",
+          "named": true
+        },
+        {
+          "type": "discard_statement",
+          "named": true
+        },
+        {
+          "type": "for_statement",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "increment_statement",
+          "named": true
+        },
+        {
+          "type": "loop_statement",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_statement",
+          "named": true
+        },
+        {
+          "type": "preproc_import",
+          "named": true
+        },
+        {
+          "type": "return_statement",
+          "named": true
+        },
+        {
+          "type": "switch_statement",
+          "named": true
+        },
+        {
+          "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
+          "type": "variable_statement",
+          "named": true
+        },
+        {
+          "type": "while_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "preproc_ifdef_in_struct_declaration",
+    "named": true,
+    "fields": {
+      "alternative": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "#else",
+            "named": false
+          },
+          {
+            "type": "preproc_bevy_elif_in_struct_declaration",
+            "named": true
+          },
+          {
+            "type": "preproc_else",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "::",
+            "named": false
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "bitcast_expression",
+            "named": true
+          },
+          {
+            "type": "composite_value_decomposition_expression",
+            "named": true
+          },
+          {
+            "type": "const_literal",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "type_constructor_or_function_call_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "preproc_ifdef",
+          "named": true
+        },
+        {
+          "type": "preproc_ifdef_in_struct_declaration",
+          "named": true
+        },
+        {
+          "type": "preproc_import",
+          "named": true
+        },
+        {
+          "type": "struct_member",
           "named": true
         }
       ]
@@ -1628,11 +2884,26 @@
     }
   },
   {
-    "type": "return_statement",
+    "type": "preproc_literal",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "return_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -1660,6 +2931,10 @@
           "named": true
         },
         {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
           "type": "subscript_expression",
           "named": true
         },
@@ -1677,6 +2952,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -1684,6 +2960,10 @@
       "types": [
         {
           "type": "define_import_path",
+          "named": true
+        },
+        {
+          "type": "define_preproc",
           "named": true
         },
         {
@@ -1716,6 +2996,21 @@
         },
         {
           "type": "type_alias_declaration",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string_path",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_content",
           "named": true
         }
       ]
@@ -1779,9 +3074,13 @@
     "named": true,
     "fields": {
       "subscript": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1804,6 +3103,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -1821,9 +3124,13 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -1846,6 +3153,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -1913,6 +3224,10 @@
         },
         {
           "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
           "named": true
         },
         {
@@ -1998,7 +3313,15 @@
           "named": true
         },
         {
+          "type": "import_path",
+          "named": true
+        },
+        {
           "type": "int_literal",
+          "named": true
+        },
+        {
+          "type": "preproc_literal",
           "named": true
         },
         {
@@ -2017,9 +3340,13 @@
     "named": true,
     "fields": {
       "argument": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -2042,6 +3369,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -2161,11 +3492,19 @@
           "named": true
         },
         {
+          "type": "preproc_literal",
+          "named": true
+        },
+        {
           "type": "subscript_expression",
           "named": true
         },
         {
           "type": "type_constructor_or_function_call_expression",
+          "named": true
+        },
+        {
+          "type": "type_declaration",
           "named": true
         },
         {
@@ -2188,9 +3527,13 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "::",
+            "named": false
+          },
           {
             "type": "binary_expression",
             "named": true
@@ -2213,6 +3556,10 @@
           },
           {
             "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "preproc_literal",
             "named": true
           },
           {
@@ -2254,6 +3601,18 @@
     "named": false
   },
   {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#",
+    "named": false
+  },
+  {
+    "type": "#define",
+    "named": false
+  },
+  {
     "type": "#define_import_path",
     "named": false
   },
@@ -2263,6 +3622,10 @@
   },
   {
     "type": "#endif",
+    "named": false
+  },
+  {
+    "type": "#if",
     "named": false
   },
   {
@@ -2366,6 +3729,10 @@
     "named": false
   },
   {
+    "type": "::{",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
@@ -2434,6 +3801,14 @@
     "named": false
   },
   {
+    "type": "atomic",
+    "named": false
+  },
+  {
+    "type": "binding_array",
+    "named": false
+  },
+  {
     "type": "bitcast",
     "named": false
   },
@@ -2451,6 +3826,10 @@
   },
   {
     "type": "case",
+    "named": false
+  },
+  {
+    "type": "const",
     "named": false
   },
   {
@@ -2518,6 +3897,14 @@
     "named": false
   },
   {
+    "type": "ifdef",
+    "named": false
+  },
+  {
+    "type": "ifndef",
+    "named": false
+  },
+  {
     "type": "int_literal",
     "named": true
   },
@@ -2579,6 +3966,10 @@
   },
   {
     "type": "ptr",
+    "named": false
+  },
+  {
+    "type": "push_constant",
     "named": false
   },
   {
@@ -2668,6 +4059,10 @@
   {
     "type": "storage",
     "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
   },
   {
     "type": "struct",

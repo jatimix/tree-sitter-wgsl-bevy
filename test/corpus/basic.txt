@@ -155,7 +155,7 @@ fn fragment(in: FragmentInput) -> @location(0) vec4<f32> {
   (function_declaration
     (attribute
       (identifier))
-    (identifier)
+    (import_path (identifier))
     (parameter_list
       (parameter
         (variable_identifier_declaration
@@ -219,6 +219,69 @@ struct FragmentInput {
             (identifier)
             (type_declaration
               (type_declaration))))))))
+================================================================================
+import list
+================================================================================
+#import bevy_pbr::mesh_view_bindings::globals
+#import bevy_pbr::{
+    mesh_view_bindings::globals,
+    prepass_utils,
+    forward_io::VertexOutput,
+}
+#import simple::double::{
+    import1,
+    import2,
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (preproc_import
+    path: (import_path
+      (identifier)
+      (identifier)
+      (identifier)))
+  (preproc_import
+    path: (import_path
+      (identifier)
+      (import_list
+      path: (import_path
+        (identifier)
+        (identifier))
+      path: (import_path
+        (identifier))
+      path: (import_path
+        (identifier)
+        (identifier)))))
+  (preproc_import
+    path: (import_path
+      (identifier)
+      (identifier)
+      (import_list
+      path: (import_path
+        (identifier))
+      path: (import_path
+        (identifier))))))
+
+================================================================================
+alias in import list
+================================================================================
+#import b::e::f::{
+        f as f
+}
+
+---------------------------------------------------------------------------------
+(source_file
+  (preproc_import
+    path: (import_path
+      (identifier)
+      (identifier)
+      (identifier)
+      (import_list
+        path: (import_path
+          (identifier))
+        alias: (alias
+          (identifier))))))
 
 ================================================================================
 #define_import_path
@@ -233,3 +296,226 @@ struct FragmentInput {
     (import_path
       (identifier)
       (identifier))))
+
+
+================================================================================
+ifdef in param
+================================================================================
+
+fn fun(
+#ifdef lol
+f: a,
+#else ifdef lol
+f: a,
+#else
+f: a,
+#endif
+) {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    (import_path
+      (identifier))
+    (preproc_ifdef_in_param_list
+      (identifier)
+      (parameter_list
+        (parameter
+          (variable_identifier_declaration
+            (identifier)
+            (type_declaration
+              (identifier)))))
+      (preproc_bevy_elif_in_param_list
+        (identifier)
+        (parameter_list
+          (parameter
+            (variable_identifier_declaration
+              (identifier)
+              (type_declaration
+                (identifier)))))
+        (preproc_else
+          (parameter_list
+            (parameter
+              (variable_identifier_declaration
+                (identifier)
+                (type_declaration
+                  (identifier))))))))
+    (compound_statement)))
+
+================================================================================
+ifdef in param
+================================================================================
+
+fn fun(
+f: a,
+#ifdef lol
+f: a,
+#endif
+t: a,
+) {
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    name: (import_path
+      (identifier))
+    parameters: (parameter_list
+      (parameter
+        (variable_identifier_declaration
+          name: (identifier)
+          type: (type_declaration
+            (identifier)))))
+    (preproc_ifdef_in_param_list
+      name: (identifier)
+      (parameter_list
+        (parameter
+          (variable_identifier_declaration
+            name: (identifier)
+            type: (type_declaration
+              (identifier))))))
+    parameters: (parameter_list
+      (parameter
+        (variable_identifier_declaration
+          name: (identifier)
+          type: (type_declaration
+            (identifier)))))
+    body: (compound_statement)))
+
+================================================================================
+ifdef in args
+================================================================================
+
+fn f() {
+    return T(
+        0,
+#ifdef M
+        0,
+#endif
+#ifdef M
+0,
+#endif
+    );
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    name: (import_path
+      (identifier))
+    body: (compound_statement
+      (return_statement
+        (type_constructor_or_function_call_expression
+          (type_declaration
+            (identifier))
+          (argument_list_expression
+            (const_literal
+              (int_literal))
+            (preproc_ifdef_in_argument
+              name: (identifier)
+              (const_literal
+                (int_literal)))
+            (preproc_ifdef_in_argument
+              name: (identifier)
+              (const_literal
+                (int_literal)))))))))
+
+================================================================================
+compound args list
+================================================================================
+
+fn fun(t: f32) {
+   fun(a, a.b);
+}
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    name: (import_path
+      (identifier))
+    parameters: (parameter_list
+      (parameter
+        (variable_identifier_declaration
+          name: (identifier)
+          type: (type_declaration))))
+    body: (compound_statement
+      (type_constructor_or_function_call_expression
+        (type_declaration
+          (identifier))
+        (argument_list_expression
+          (identifier)
+          (composite_value_decomposition_expression
+            value: (identifier)
+            accessor: (identifier)))))))
+
+================================================================================
+nested ifdef
+================================================================================
+
+fn fun(t: f32) {
+   return f(
+        a,
+        a.b,
+#ifdef PREPASS_FRAGMENT
+#ifdef MOTION_VECTOR_PREPASS
+        motion_vector,
+#endif
+#endif
+   );
+}
+
+---------------------------------------------------------------------------------
+(source_file
+  (function_declaration
+    name: (import_path
+      (identifier))
+    parameters: (parameter_list
+      (parameter
+        (variable_identifier_declaration
+          name: (identifier)
+          type: (type_declaration))))
+    body: (compound_statement
+      (return_statement
+        (type_constructor_or_function_call_expression
+          (type_declaration
+            (identifier))
+          (argument_list_expression
+            (identifier)
+            (composite_value_decomposition_expression
+              value: (identifier)
+              accessor: (identifier))
+            (preproc_ifdef_in_argument
+              name: (identifier)
+              (preproc_ifdef_in_argument
+                name: (identifier)
+                (identifier)))))))))
+
+================================================================================
+preproc in type
+================================================================================
+fn ff() {
+    let num_taps = #{SCREEN_SPACE_SPECULAR_TRANSMISSION_BLUR_TAPS};
+}
+var mesh: array<Mesh, #{PER_OBJECT_BUFFER_BATCH_SIZE}u>;
+---------------------------------------------------------------------------------
+(source_file
+  (function_declaration
+    name: (import_path
+      (identifier))
+    body: (compound_statement
+      (variable_statement
+        (identifier)
+        (preproc_literal
+          (identifier)))))
+  (global_variable_declaration
+    (variable_declaration
+      (variable_identifier_declaration
+        name: (identifier)
+        type: (type_declaration
+          (type_declaration
+            (identifier))
+          (preproc_literal
+            (identifier)))))))

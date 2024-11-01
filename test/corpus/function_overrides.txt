@@ -9,7 +9,7 @@ Virtual functions
 
 (source_file
   (function_declaration
-    (identifier)
+    (import_path (identifier))
     (parameter_list
       (parameter
         (variable_identifier_declaration
@@ -36,33 +36,32 @@ override fn Lighting::point_light (world_position: vec3<f32>) -> vec3<f32> {
 
 (source_file
   (preproc_import
-    (import_path
+    path: (import_path
       (identifier)
       (identifier))
-    (alias
+    alias: (alias
       (identifier)))
   (function_declaration
-    (import_path
+    name: (import_path
       (identifier)
       (identifier))
-    (parameter_list
+    parameters: (parameter_list
       (parameter
         (variable_identifier_declaration
-          (identifier)
-          (type_declaration
+          name: (identifier)
+          type: (type_declaration
             (type_declaration)))))
-    (function_return_type_declaration
+    type: (function_return_type_declaration
       (type_declaration
         (type_declaration)))
-    (compound_statement
+    body: (compound_statement
       (variable_statement
         (identifier)
-        (ERROR
-          (type_declaration
-            (identifier)))
         (type_constructor_or_function_call_expression
           (type_declaration
-            (identifier))
+            (import_path
+              (identifier)
+              (identifier)))
           (argument_list_expression
             (identifier))))
       (variable_statement
@@ -72,15 +71,15 @@ override fn Lighting::point_light (world_position: vec3<f32>) -> vec3<f32> {
             (type_declaration))
           (argument_list_expression
             (binary_expression
-              (identifier)
-              (const_literal
+              left: (identifier)
+              right: (const_literal
                 (float_literal))))))
       (return_statement
         (binary_expression
-          (type_constructor_or_function_call_expression
+          left: (type_constructor_or_function_call_expression
             (type_declaration
               (type_declaration))
             (argument_list_expression
               (identifier)))
-          (const_literal
+          right: (const_literal
             (float_literal)))))))
