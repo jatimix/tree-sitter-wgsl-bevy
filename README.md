@@ -33,8 +33,8 @@ meaning: it parse 100% of bevy's wgsl code without any parse error.
 
 Contribution welcome.
 
-- [] Some improvements are actually WGSL standard spec improvement and not Bevy only. But I didn't want to update the main WGSL grammar, so I overwrite some things which could be ported back into the main WGSL grammar this grammar is based upon.
-- [] I reused '_import_path_' quite a lots instead of creating a "identifier::identifier::*", which make it difficult for syntax highlight and function call.
-- [] _import_path_ + _import_list_, is junky but functionnal. Might need to make a better tree here.
-- [] Function call and type Declaration is the same node, which make formatting kindda ugly.
+- [ ] Some improvements are actually WGSL standard spec improvement and not Bevy only. But I didn't want to update the main WGSL grammar, so I overwrite some things which could be ported back into the main WGSL grammar this grammar is based upon.
+- [ ] I reused '_import_path_' quite a lots instead of creating a "identifier::identifier::*", which make it difficult for syntax highlight and function call.
+- [ ] _import_path_ + _import_list_, is junky but functionnal. Might need to make a better tree here.
+- [ ] Function call and type Declaration is the same node, which make formatting kindda ugly.
 
