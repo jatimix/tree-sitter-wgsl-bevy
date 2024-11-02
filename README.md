@@ -29,6 +29,30 @@ find ~/prog/bevy/ -name "*.wgsl" -exec tree-sitter parse {} \; | grep ERROR | wc
 
 meaning: it parse 100% of bevy's wgsl code without any parse error.
 
+# Known issues
+
+Adding a string in a comment:
+
+```
+const a: f32 = 0.0;
+
+// this is a comment with a string: "hellow"
+fn fun() {
+
+}
+```
+
+Will sadly makes syntax ERROR unrecoverable when the parser fail, and the whole buffer will be interpreted 
+as a list of string. Which will make most syntax highlighter stop working until the syntax is fixed.
+
+It's coming from the fact, that everything is a "string_content", whenever the scanner detect a double quote.
+
+"string_content" is mostly used for "path import":
+
+```
+#import "path/to/a/shader/file.wgsl"::STUFF_TO_IMPORT
+```
+
 # Stuff to improve
 
 Contribution welcome.
